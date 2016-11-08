@@ -47,6 +47,32 @@ def get_word_similarity(w1, w2, type='path'):
     return max_similarity
 
 
+def get_word_sentence_similarity(word, sentence, type='path'):
+    '''
+    simi(word|sentence) = \sum{instance in sentence}(simi(word, instance))/||sentence||
+    :param word:
+    :param sentence: list of words
+    :param type:
+    :return:
+    '''
+    if len(sentence) == 0:
+        return 0
+    sum = 0.0
+    for instance in sentence:
+        sum += get_word_similarity(word, instance, type)
+    sum /= float(len(sentence))
+    return sum
+
+def get_sentence_log_similarity(s1, s2, type='path'):
+    '''
+    Log similarity between two sentences
+    log simi(s1|s2) = (\sum{instance in s1}(log simi(instance|s2))/||s1||
+    :param s1: list of words
+    :param s2: list of words
+    :param type:
+    :return:
+    '''
+    
 
 if __name__ == '__main__':
     print get_word_similarity('dog', 'cat')
