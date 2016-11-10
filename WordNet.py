@@ -14,7 +14,7 @@ def generate_word_list(sentence, remove_stopword=True):
     sentence = re.sub(pattern, "", sentence)
     pattern = r'((http|ftp|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?'
     sentence = re.sub(pattern, "", sentence)
-    sentence = sentence.translate(string.maketrans("",""), string.punctuation)
+    sentence.translate({key: None for key in string.punctuation})
     sentence = ''.join([c for c in sentence if ord(c) < 128])
     sentence_list = sentence.lower().split()
     if remove_stopword:
