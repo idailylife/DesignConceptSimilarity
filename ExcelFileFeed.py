@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import xlrd
-
+import Constants
 
 class ExcelFileIn:
     def __init__(self, filename):
@@ -16,7 +16,7 @@ class ExcelFileIn:
         return lines
 
 if __name__ == '__main__':
-    file = r'C:\Users\inlab-dell\Documents\Tencent Files\397603432\FileRecv\方案条目汇总.xlsx'
+    file = Constants.EXCEL_INPUT_FILE
     xlsFile = ExcelFileIn(file)
     lines = xlsFile.get_lines()
     print lines
